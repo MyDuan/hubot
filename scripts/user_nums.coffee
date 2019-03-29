@@ -7,8 +7,19 @@ Seq = new Sequelize(config.database, config.username, config.password, config);
 User = Seq.import(__dirname + "/../models/web_user")
 Seq.sync()
 
+axios = require('axios');
+FBURL = "https://www.facebook.com/technologyreview/";
+
 module.exports = (robot) ->
 
   robot.hear /user numbers/i, (msg) ->
     User.count().then (c) ->
-      msg.send "#{c}"
+      axios.get(FBURL).then (response) ->
+        html = response.data;
+        like = html.match(/#x300d;(.*?)&#x4ef6;/)[1];
+        msg.send "
+        ```
+          user namebers in db: #{c} \n
+          Likes in facebook: #{like} \n
+        ```
+        "
