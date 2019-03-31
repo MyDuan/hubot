@@ -8,7 +8,7 @@ User = Seq.import(__dirname + "/../models/web_user")
 Seq.sync()
 
 axios = require('axios');
-FBURL = "https://www.facebook.com/technologyreview/";
+FBURL = "https://www.facebook.com/lightenedjp";
 
 module.exports = (robot) ->
 
@@ -17,9 +17,5 @@ module.exports = (robot) ->
       axios.get(FBURL).then (response) ->
         html = response.data;
         like = html.match(/#x300d;(.*?)&#x4ef6;/)[1];
-        msg.send "
-        ```
-          user namebers in db: #{c} \n
-          Likes in facebook: #{like} \n
-        ```
-        "
+        msg.send "```user namebers in db: #{c}" +"\n"+
+        "Likes in facebook: #{like}```"
