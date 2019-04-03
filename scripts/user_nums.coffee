@@ -22,7 +22,6 @@ module.exports = (robot) ->
       robot.send {room: channel}, msg
 
   new cronJob('0 34 19 * * 1-5', () ->
-    # ↑のほうで宣言しているsendメソッドを実行する
     User.count().then (c) ->
       axios.get(FBURL).then (response) ->
         html = response.data;
