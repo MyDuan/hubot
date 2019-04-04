@@ -19,7 +19,7 @@ This hubot app is created by using hubot framwork. And I edit the readme to foll
 - Locally
     - You can start testhubot locally by running:
 
-        % bin/hubot --adapter slack
+        `bin/hubot --adapter slack`
 
     - Then add the bot to your slack and can test `ping` or other official example.
     - You can Add your scripts in script floder.
