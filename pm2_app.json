@@ -1,0 +1,16 @@
+{
+    "apps":[
+        {
+            "name"             : "hubot",
+            "args"             : ["-a", "slack"],
+            "script"           : "./bin/hubot",
+            "exec_mode"        : "fork",
+            "exec_interpreter" : "bash",
+            "autorestart"      : true,
+            "env": {
+                "NODE_ENV"           : "production",
+                "PORT"               : "8080"
+            }
+        }
+    ]
+}
