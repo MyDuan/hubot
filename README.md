@@ -32,6 +32,7 @@ This hubot app is created by using hubot framwork. And I edit the readme to foll
 
 - An example to report KPI(from DB and facebook likes of a group.) and send it to slack. By send
     `testhubot user numbers`
+    - `sequlize` is used
 - Also add an example of cronjob
 - Other functions in progress
 
