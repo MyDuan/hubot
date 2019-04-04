@@ -9,7 +9,8 @@
             "autorestart"      : true,
             "env": {
                 "NODE_ENV"           : "production",
-                "PORT"               : "8080"
+                "PORT"               : "8080",
+                "HUBOT_SLACK_TOKEN"  : process.env.HUBOT_SLACK_TOKEN
             }
         }
     ]
