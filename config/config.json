@@ -2,8 +2,15 @@
   "development": {
     "username": "root",
     "password": "root",
+    "database": "web_app",
     "host": "localhost",
     "port": "8889",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "database": "web_app",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
