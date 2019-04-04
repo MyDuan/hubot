@@ -3,6 +3,8 @@ config    = require(__dirname + '/../config/config.json')[env];
 cronJob   = require('cron').CronJob
 Sequelize = require('sequelize').Sequelize;
 
+if(!config.password)
+  config.password = process.env.HUBOT_DB_PASS
 Seq = new Sequelize(config.database, config.username, config.password, config);
 User = Seq.import(__dirname + "/../models/web_user")
 Seq.sync()
