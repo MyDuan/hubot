@@ -1,0 +1,56 @@
+version: 2
+
+jobs:
+  build_and_test:
+    working_directory: ~/hubot
+    docker:
+      - image: circleci/node:10.9.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-hubot-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-hubot-
+      - run:
+          name: Start
+          command: 'echo start build and test'
+      - run:
+          name: Build
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-hubot-{{ checksum "package.json" }}
+
+  deploy_if_on_master:
+    machine: true
+    working_directory: ~/hubot
+    steps:
+      - checkout
+      - run:
+          name: Start master deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                echo deploy master;
+                npm install pm2 -g;
+                pm2 deploy pm2_app.json production
+            fi
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build_and_test
+      - deploy_if_on_master:
+         requires:
+            - build_and_test
+         filters:
+           branches:
+            only: master
+
+experimental:
+  notify:
+    branches:
+      only:
+        - master
