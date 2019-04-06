@@ -26,8 +26,8 @@ This hubot app is created by using hubot framwork. And I edit the readme to foll
 - Server
     - I also deploy this hubot in my own VPS server by using pm2.
     - In server use CircleCI to automatically deploy. 
-      - [config.yml](https://github.com/MyDuan/hubot/blob/master/.circleci/config.yml)
-      - `pm2 startOrRestart pm2_app.json` to start it.
+      - Use ssh to deploy. [config.yml](https://github.com/MyDuan/hubot/blob/master/.circleci/config.yml)
+      - `pm2 startOrRestart pm2_app.json` to start or restart it.
  
 ### What it dose
 
