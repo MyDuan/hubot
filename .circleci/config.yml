@@ -33,8 +33,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 echo deploy master;
-                npm install pm2 -g;
-                pm2 deploy pm2_app.json production
+                ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "cd $PRODUCTION_WORKING_DIRECTORY; pwd; git pull; pm2 startOrRestart pm2_app.json;"
             fi
 
 workflows:
