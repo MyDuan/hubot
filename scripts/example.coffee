@@ -12,6 +12,9 @@ module.exports = (robot) ->
 
   robot.hear /Hi bot/i, (msg) ->
     msg.send "Hi!"
+
+  robot.hear /CircleCI/i, (msg) ->
+    msg.send "CircleCI is used!"
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
